@@ -1,14 +1,13 @@
-name: Build
+name: Version increment
 on:
   pull_request:
-    types: [ opened, synchronize, edited, reopened ]
-  push:
-    branches:
-      - 'release/**'
+    types: [ opened ]
 jobs:
-  build:
+  version_increment:
+    if: ${{ github.head_ref == 'release/**' }}
     runs-on: ubuntu-latest
     steps:
+      - run: echo "Increase version in branch $GITHUB_HEAD_REF"
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: set up JDK 1.8
@@ -23,5 +22,3 @@ jobs:
           versionName: 0.2.0
       - name: Auto commit changed files
         uses: stefanzweifel/git-auto-commit-action@v4
-      - name: Grant rights
-        run: chmod +x build.gradle
