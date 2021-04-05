@@ -6,7 +6,7 @@ jobs:
   version_increment:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "Increase version in branch $GITHUB_HEAD_REF ${github.head_ref}"
+      - run: echo "Increase version in branch $GITHUB_HEAD_REF ${{github.head_ref}}"
       - name: "Check Condition"
         if: ${{ github.head_ref == 'test/**' }}
         run: echo "Meet the condition"
