@@ -1,0 +1,23 @@
+name: Build
+on:
+  pull_request:
+    types: [ opened, synchronize, edited, reopened ]
+  push:
+    branches:
+      - 'release/**'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: set up JDK 1.8
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.8
+      - name: Bump version
+        uses: chkfung/android-version-actions@v1.1
+        with:
+          gradlePath: app/build.gradle
+          versionCode: ${{github.run_number}}
+          versionName: 0.2.0
