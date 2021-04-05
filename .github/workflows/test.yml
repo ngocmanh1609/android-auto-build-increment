@@ -8,5 +8,5 @@ jobs:
     steps:
       - run: echo "Increase version in branch $GITHUB_HEAD_REF ${{github.head_ref}}"
       - name: "Check Condition"
-        if: ${{ GITHUB_HEAD_REF == 'test/**' }}
+        if: ${{ github.head_ref == 'test/**' }}
         run: echo "Meet the condition"
