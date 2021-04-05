@@ -1,7 +1,7 @@
 name: Version increment
 on:
   pull_request:
-    types: [ opened ]
+    types: [ created ]
 jobs:
   version_increment:
     if: ${{ github.head_ref == 'release/**' }}
