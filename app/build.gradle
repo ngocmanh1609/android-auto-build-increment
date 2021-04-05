@@ -11,8 +11,8 @@ android {
         applicationId "com.example.testcdapp"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 1
-        versionName "0.1.0"
+        versionCode 12
+        versionName "0.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
