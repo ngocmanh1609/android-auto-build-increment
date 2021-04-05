@@ -1,10 +1,9 @@
 name: Version increment
 on:
-  pull_request:
-    types: [ opened, synchronize, edited, reopened ]
+  create
 jobs:
   version_increment:
-    if: startsWith(github.head_ref, 'release/')
+    if: startsWith(github.ref, 'refs/heads/release/')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
