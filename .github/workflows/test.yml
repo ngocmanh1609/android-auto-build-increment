@@ -21,10 +21,7 @@ jobs:
           gradlePath: app/build.gradle
           versionCode: ${{github.run_number}}
           versionName: 0.2.0
-      - name: Add new version to Github
-        run: |
-          git add app/build.gradle
-          git commit --amend --no-edit
-          git push -f origin ${GITHUB_REF#refs/heads/}
+      - name: Auto commit changed files
+        uses: stefanzweifel/git-auto-commit-action@v4
       - name: Grant rights
         run: chmod +x build.gradle
