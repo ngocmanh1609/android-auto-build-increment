@@ -21,3 +21,5 @@ jobs:
           gradlePath: app/build.gradle
           versionCode: ${{github.run_number}}
           versionName: 0.2.0
+      - name: Grant rights
+        run: chmod +x build.gradle
