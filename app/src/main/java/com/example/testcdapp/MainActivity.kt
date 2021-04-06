@@ -7,7 +7,7 @@ import android.util.Log
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        Log.d("OKKK", BuildConfig.VERSION_CODE.toString())
+        Log.d("OKKK", BuildConfig.VERSION_CODE.toString() + "")
         setContentView(R.layout.activity_main)
     }
 }
