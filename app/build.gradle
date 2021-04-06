@@ -3,6 +3,8 @@ plugins {
     id 'kotlin-android'
 }
 
+apply from: 'versions.gradle'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -12,7 +14,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 30
         versionCode 12
-        versionName "0.2.0"
+        versionName "0.1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -43,3 +45,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+
+//android.applicationVariants.all { variant ->
+//    versions.apply(variant)
+//}
