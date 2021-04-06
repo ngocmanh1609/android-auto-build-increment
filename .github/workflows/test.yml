@@ -1,7 +1,8 @@
 name: Version increment
 on:
-  pull_request:
-    types: [ opened, synchronize, edited, reopened ]
+  push:
+    branches:
+      - develop
 jobs:
   version_increment:
     runs-on: ubuntu-latest
