@@ -15,8 +15,7 @@ jobs:
       - name: Calculate new version code
         id: new-version-code
         run: |
-          new_version_code=$(./gradlew -q increaseVersionCode | tail -n 1)
-          echo ::set-output name=version_code::new_version_code
+          echo ::set-output name=version_code::$(./gradlew -q increaseVersionCode | tail -n 1)
       - name: Bump version
         uses: chkfung/android-version-actions@v1.1
         with:
