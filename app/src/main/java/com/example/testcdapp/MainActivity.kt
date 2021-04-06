@@ -7,7 +7,7 @@ import android.util.Log
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        Log.d("")dfd
+//        Log.d("")
         setContentView(R.layout.activity_main)
     }
 }
