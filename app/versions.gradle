@@ -1,0 +1,6 @@
+task('increaseVersionCode') {
+    doLast {
+        def newVersionCode = project.android.defaultConfig.versionCode + 1
+        println(newVersionCode)
+    }
+}
