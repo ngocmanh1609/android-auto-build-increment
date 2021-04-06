@@ -1,9 +1,9 @@
 name: Version increment
 on:
-  create
+  pull_request:
+    types: [ opened, synchronize, edited, reopened ]
 jobs:
   version_increment:
-    if: startsWith(github.ref, 'refs/heads/release/')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout the code
@@ -12,11 +12,15 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
+      - name: Calculate new version code
+        id: new-version-code
+        run: |
+          new_version_code=$(./gradlew -q increaseVersionCode | tail -n 1)
+          echo ::set-output name=version_code::new_version_code
       - name: Bump version
         uses: chkfung/android-version-actions@v1.1
         with:
           gradlePath: app/build.gradle
-          versionCode: ${{github.run_number}}
-          versionName: 0.2.0
+          versionCode: ${{ steps.new-version-code.outputs.version_code }}
       - name: Auto commit changed files
         uses: stefanzweifel/git-auto-commit-action@v4
