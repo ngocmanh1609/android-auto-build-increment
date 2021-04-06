@@ -37,13 +37,16 @@
 
 task('increaseVersionCode') {
     doLast {
-        def versionCode = project.ext.android_version_code.toInteger() + 1
+        def newVersionCode = project.android.defaultConfig.versionCode + 1
+        println(newVersionCode)
+        
+//        rootProject.extensions.getByName("ext")["android_version_code"] = 5
+//        def versionCode = globalConfig["android_version_code"].toInteger() + 1
+//        def versionCode = project.ext.android_version_code.toInteger() + 1
 //        def versionName = project.ext.android_version_name.split("\\.")
 //        def last = Integer.parseInt(versionName[1])
 //        versionName[1] = Integer.toString(last + 1)
 //        versionName = versionName.join(".")
-
-        project.ext.android_version_code = versionCode
 
 //        ant.propertyfile(file: "../gradle.properties") {
 //            entry(key: "VERSION_CODE", value: versionCode)
