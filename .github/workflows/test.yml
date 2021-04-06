@@ -24,3 +24,6 @@ jobs:
           versionCode: ${{ steps.new-version-code.outputs.version_code }}
       - name: Auto commit changed files
         uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: [CHORE] Update version code to ${{ steps.new-version-code.outputs.version_code }}
+          file_pattern: app/build.gradle
