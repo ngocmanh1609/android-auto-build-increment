@@ -16,15 +16,9 @@ jobs:
       - name: Calculate new version code
         id: new-version-code
         run: |
-          echo ::set-output name=version_code::$(./gradlew -q increaseVersionCode | tail -n 1)
+          echo "Build number ${{ github.run_number }}"
       - name: Bump version
         uses: chkfung/android-version-actions@v1.1
         with:
           gradlePath: app/build.gradle
-          versionCode: ${{ steps.new-version-code.outputs.version_code }}
-      - name: Auto commit build.gradle files
-        uses: stefanzweifel/git-auto-commit-action@v4
-        continue-on-error: true
-        with:
-          commit_message: '[CHORE] Update version code to ${{ steps.new-version-code.outputs.version_code }}'
-          file_pattern: app/build.gradle
+          versionCode: ${{ github.run_number }}
