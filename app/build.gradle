@@ -5,6 +5,8 @@ plugins {
 
 apply from: 'versions.gradle'
 
+def globalConfig = rootProject.extensions.getByName("ext")
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
@@ -13,7 +15,7 @@ android {
         applicationId "com.example.testcdapp"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 20
+        versionCode globalConfig["android_version_code"]
         versionName "0.2.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
