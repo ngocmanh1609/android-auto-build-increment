@@ -1,6 +1,7 @@
 name: Version increment
 on:
-  create
+  pull_request:
+    types: [ opened, synchronize, edited, reopened ]
 jobs:
   version_increment:
     if: startsWith(github.ref, 'refs/heads/release/')

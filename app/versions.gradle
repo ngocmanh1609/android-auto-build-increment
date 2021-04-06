@@ -1,0 +1,53 @@
+//project.ext.versions = new HashMap<String, Object>()
+//
+//project.ext.versions.apply = { variant ->
+//    versions.applyVersionCode(variant)
+////    versions.applyVersionName(variant)
+//}
+//
+//// increments version code
+//project.ext.versions.applyVersionCode = { variant ->
+//    def buildType = variant.buildType.name
+//    def versionCode = VERSION_CODE.toInteger()
+//
+//    //increment only for 'release' or 'beta' builds
+////    if('release'.equals(buildType) || 'beta'.equals(buildType)) {
+//        versionCode += 1
+//        ant.propertyfile(file: "../gradle.properties") {
+//            entry(key: "VERSION_CODE", value: versionCode)
+//        }
+////    }
+//
+//    variant.mergedFlavor.versionCode = versionCode
+//}
+//
+//// updates version name based on last git tag
+//project.ext.versions.applyVersionName = { variant ->
+//    def lastGitTag = 'git describe --abbrev=0 --tags'.execute().text.trim()
+//
+//    //update version name if we have a new tag
+//    if (!VERSION_NAME.equals(lastGitTag)) {
+//        ant.propertyfile(file: "../gradle.properties") {
+//            entry(key: "VERSION_NAME", value: lastGitTag)
+//        }
+//    }
+//
+//    variant.mergedFlavor.versionName = lastGitTag
+//}
+
+task('increaseVersionCode') {
+    doLast {
+        def versionCode = project.ext.android_version_code.toInteger() + 1
+//        def versionName = project.ext.android_version_name.split("\\.")
+//        def last = Integer.parseInt(versionName[1])
+//        versionName[1] = Integer.toString(last + 1)
+//        versionName = versionName.join(".")
+
+        project.ext.android_version_code = versionCode
+
+//        ant.propertyfile(file: "../gradle.properties") {
+//            entry(key: "VERSION_CODE", value: versionCode)
+//        entry(key: "VERSION_NAME", value: versionName)
+//        }
+    }
+}
